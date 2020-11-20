@@ -1,0 +1,656 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Spartan", sans-serif;
+  position: relative;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 100vh;
+}
+
+.container .productText,
+.container .productImage {
+  height: 70vh;
+}
+
+.container .productImage {
+  grid-column: 1/5;
+  background: silver;
+  position: relative;
+}
+
+.container .productImage .carouselImage {
+  position: absolute;
+  transition: all 0.5s linear;
+}
+
+.container .productImage .carouselImage.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.container .productImage .carouselImage.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container .productImage header {
+  position: absolute;
+  top: 3.5rem;
+  left: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0 6rem 0 0;
+}
+
+.container .productImage header .logo {
+  order: 2;
+}
+
+.container .productImage header nav {
+  margin-left: 2.5rem;
+  order: 3;
+  display: flex;
+  justify-content: space-between;
+  z-index: 30;
+  transition: all 0.5s linear;
+}
+
+.container .productImage header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.container .productImage header nav ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+}
+
+.container .productImage header nav ul li a {
+  position: relative;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+
+  font-size: 85%;
+}
+
+.container .productImage header nav ul li a::before {
+  content: "";
+  position: absolute;
+  text-align: center;
+  height: 0.082rem;
+  right: 0;
+  background: hsl(0, 0%, 100%);
+  width: 0%;
+  bottom: -3px;
+  transition: all 0.5s ease-in-out;
+}
+
+.container .productImage header nav ul li a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.hamburger {
+  display: none;
+}
+
+.container .productText {
+  grid-column: 5/8;
+  position: relative;
+  background: #ffffff;
+}
+
+.container .productText .marketingText {
+  padding: 4rem 5rem 0;
+  position: absolute;
+  width: 100%;
+  transition: all 0.5s linear;
+}
+
+.container .productText .marketingText.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.container .productText .marketingText.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container .productText .marketingText h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.container .productText .marketingText p {
+  font-size: 83%;
+  color: hsl(0, 0%, 63%);
+  line-height: 1.35rem;
+}
+
+.container .productText .shopButton {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 5rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  bottom: 6rem;
+}
+
+.container .productText .shopButton:hover {
+  color: hsl(0, 0%, 63%);
+}
+
+.container .productText .shopButton p {
+  letter-spacing: 0.5rem;
+  font-weight: 600;
+  font-size: 90%;
+}
+
+.container .productText .shopButton span {
+  display: flex;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 1.7rem;
+}
+
+.container .productText .controllerContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4rem;
+  width: 9rem;
+}
+
+.container .productText .controllerContainer .controllers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  height: 100%;
+}
+
+.container .productText .controllerContainer .controllers > * {
+  flex: 0 0 50%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.container .productText .controllerContainer .controllers > * svg {
+  height: 50%;
+  width: 100%;
+}
+
+.container .productText .controllerContainer .controllers > *:hover {
+  background: hsl(0, 0%, 27%);
+}
+
+.container .productText .controllerContainer .controllers {
+  background: #000000;
+}
+
+.footer {
+  height: 30vh;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.footer .first {
+  grid-column: 1/3;
+}
+
+.footer .second {
+  padding: 3rem 3rem 1.5rem;
+  grid-column: 3/6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer .second h3 {
+  letter-spacing: 0.3rem;
+  margin-bottom: 1rem;
+  font-size: 85%;
+  text-align: center;
+  font-weight: 700;
+}
+
+.footer .second p {
+  font-size: 83%;
+  line-height: 1.35rem;
+
+  color: hsl(0, 0%, 63%);
+}
+
+.footer .third {
+  grid-column: 6/8;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  grid-column: 1/8;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+  padding: 0 0.2rem;
+}
+
+.blackOverlay.active {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  transition: all 0.5s linear;
+}
+
+/* Responsive Styles */
+
+@media (width: 768px) {
+  .hamburger {
+    display: block;
+    padding: 0 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container .productText,
+  .container .productImage {
+    height: 50vh;
+    grid-column: 1/8;
+  }
+
+  .container .productImage header {
+    justify-content: space-between;
+    left: 1rem;
+    top: 2.5rem;
+    padding: 0 23rem 0 0;
+  }
+
+  .container .productImage header nav {
+    position: absolute;
+    margin: 0;
+    top: -2.5rem;
+    left: -1rem;
+    width: 100%;
+    height: 15vh;
+    padding: 0 7rem 0 0;
+    background: hsl(0, 0%, 100%);
+  }
+
+  .container .productImage header nav ul li a {
+    font-weight: 700;
+    color: #000000;
+  }
+
+  .container .productText .marketingText {
+    padding: 3.5rem 3.5rem;
+  }
+
+  .container .productText .marketingText h1 {
+    font-size: 300%;
+    font-weight: 700;
+    line-height: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .container .productText .controllerContainer {
+    top: -19%;
+    left: 81%;
+    height: 6rem;
+  }
+
+  .container .productText .shopButton {
+    margin-top: -1.1rem;
+    padding: 0 3.5rem;
+  }
+
+  .container .productText .shopButton p {
+    font-size: 180%;
+  }
+
+  .container .productText .marketingText p {
+    font-size: 140%;
+    color: hsl(0, 0%, 63%);
+    line-height: 2.3rem;
+  }
+  .footer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer > * {
+    height: 33.33vh;
+    grid-column: 1/2;
+  }
+  .footer .second {
+    padding: 3rem 3.5rem 1.5rem;
+    height: 50vh;
+    align-items: flex-start;
+  }
+  .footer .second h3 {
+    text-align: left;
+    font-size: 220%;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer .second p {
+    font-size: 140%;
+    line-height: 2.3rem;
+    color: hsl(0, 0%, 63%);
+  }
+
+  .attribution {
+    font-size: 70%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .hamburger {
+    display: block;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container .productText,
+  .container .productImage {
+    height: 50vh;
+    grid-column: 1/8;
+  }
+
+  .container .productImage header {
+    justify-content: space-between;
+    left: 1rem;
+    top: 2.5rem;
+    padding: 0 12rem 0 0;
+  }
+
+  .container .productImage header nav {
+    position: absolute;
+    margin: 0;
+    top: -2.5rem;
+    left: -1rem;
+    width: 100%;
+    height: 15vh;
+    padding: 0 2rem 0 0;
+    background: hsl(0, 0%, 100%);
+    top: -20rem;
+  }
+
+  .container .productImage header nav.showNav {
+    top: -2.5rem;
+  }
+
+  .container .productImage header nav ul li a {
+    font-weight: 700;
+    color: #000000;
+  }
+
+  .container .productImage header nav ul li a::before {
+    background-color: #000000;
+  }
+
+  .container .productText .marketingText {
+    padding: 5.5rem 2rem;
+  }
+
+  .container .productText .marketingText h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .container .productText .controllerContainer {
+    top: -16%;
+    left: 65%;
+  }
+  .container .productText .shopButton {
+    padding: 0 2rem;
+
+    bottom: 3.5rem;
+  }
+
+  .footer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer > * {
+    height: 33.33vh;
+    grid-column: 1/2;
+  }
+  .footer .second {
+    padding: 2rem 2rem 1.5rem;
+    height: 50vh;
+    align-items: flex-start;
+  }
+  .footer .second h3 {
+    text-align: left;
+  }
+
+  .attribution {
+    font-size: 70%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+}
+
+@media (max-width: 374px) {
+  .hamburger {
+    display: block;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container .productText,
+  .container .productImage {
+    height: 50vh;
+    grid-column: 1/8;
+  }
+
+  .container .productImage header {
+    justify-content: space-between;
+    left: 1rem;
+    top: 2.5rem;
+    padding: 0 8.5rem 0 0;
+  }
+
+  .container .productImage header nav {
+    position: absolute;
+    margin: 0;
+    top: -2.5rem;
+    left: -1rem;
+    width: 100%;
+    height: 15vh;
+    padding: 0 1rem 0 0;
+    background: hsl(0, 0%, 100%);
+    top: -20rem;
+  }
+
+  .container .productImage header nav.showNav {
+    top: -2.5rem;
+  }
+
+  .container .productImage header nav ul li {
+    padding: 0.5rem;
+  }
+
+  .container .productImage header nav ul li a {
+    font-weight: 700;
+    color: #000000;
+  }
+
+  .container .productText .marketingText {
+    padding: 1.5rem 2rem;
+  }
+
+  .container .productText .marketingText h1 {
+    font-size: 160%;
+    font-weight: 700;
+    line-height: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .container .productText .marketingText p {
+    font-size: 70%;
+    color: hsl(0, 0%, 63%);
+    line-height: 1.35rem;
+  }
+
+  .container .productText .controllerContainer {
+    top: -14.5%;
+    left: 85%;
+    height: 2.5rem;
+    width: 3rem;
+  }
+  .container .productText .shopButton {
+    bottom: 0.5rem;
+    padding: 0 2rem;
+  }
+
+  .container .productText .shopButton p {
+    font-size: 100%;
+    letter-spacing: 0.3rem;
+  }
+
+  .footer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer > * {
+    height: 33.33vh;
+    grid-column: 1/2;
+  }
+  .footer .second {
+    padding: 2rem 2rem 1.5rem;
+    height: 50vh;
+    align-items: flex-start;
+  }
+
+  .footer .second h3 {
+    text-align: left;
+    font-size: 85%;
+  }
+
+  .footer .second p {
+    font-size: 70%;
+  }
+
+  .attribution {
+    font-size: 60%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+}
+
+@media (height: 731px) {
+  .container .productText .controllerContainer {
+    top: -17.5%;
+  }
+}
+
+@media (height: 667px) {
+  .container .productText .marketingText {
+    padding: 2rem;
+  }
+  .container .productText .controllerContainer {
+    top: -19.5%;
+    left: 62%;
+  }
+  .container .productText .shopButton {
+    margin-top: -1rem;
+    padding: 0 2rem;
+  }
+}
+@media (height: 736px) {
+  .container .productText .marketingText {
+    padding: 2rem;
+  }
+  .container .productText .controllerContainer {
+    top: -17.5%;
+    left: 65%;
+  }
+  .container .productText .shopButton {
+    margin-top: -1rem;
+    padding: 0 2rem;
+  }
+  .container .productText .marketingText h1 {
+    font-size: 185%;
+    font-weight: 700;
+    line-height: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .container .productText .marketingText p {
+    font-size: 100%;
+    color: hsl(0, 0%, 63%);
+    line-height: 1.65rem;
+  }
+  .container .productText .shopButton {
+    margin-top: -0.5rem;
+    padding: 0 2rem;
+  }
+  .footer .second p {
+    font-size: 90%;
+    line-height: 1.55rem;
+    color: hsl(0, 0%, 63%);
+  }
+}
+@media (height: 640px) {
+  .container .productText .controllerContainer {
+    top: -13%;
+    left: 86.6%;
+  }
+
+  .container .productText .shopButton {
+    padding: 0 2rem;
+
+    bottom: 3.5rem;
+  }
+}
